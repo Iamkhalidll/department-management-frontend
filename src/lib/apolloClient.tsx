@@ -28,13 +28,13 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
   });
 }
 
-export function initializeApollo(initialState: any = null): ApolloClient<NormalizedCacheObject> {
+export function initializeApollo(initialState: unknown = null): ApolloClient<NormalizedCacheObject> {
   const _apolloClient = apolloClient ?? createApolloClient();
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
   // gets hydrated here
   if (initialState) {
-    _apolloClient.cache.restore(initialState);
+    _apolloClient.cache.restore(initialState as NormalizedCacheObject);
   }
   
   // For SSG and SSR always create a new Apollo Client
@@ -46,7 +46,7 @@ export function initializeApollo(initialState: any = null): ApolloClient<Normali
   return _apolloClient;
 }
 
-export function useApollo(initialState: any): ApolloClient<NormalizedCacheObject> {
+export function useApollo(initialState: unknown): ApolloClient<NormalizedCacheObject> {
   const store = useMemo(() => initializeApollo(initialState), [initialState]);
   return store;
 }

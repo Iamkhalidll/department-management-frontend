@@ -8,7 +8,8 @@ import { DepartmentsResponse } from '../types';
 
 const DepartmentList: React.FC = () => {
   const [page, setPage] = useState<number>(1);
-  const [limit, setLimit] = useState<number>(5);
+  // Using a constant instead of state since we're not changing it
+  const limit = 5;
   const [showCreateForm, setShowCreateForm] = useState<boolean>(false);
   
   const { loading, error, data, refetch } = useQuery<

@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_MUTATION } from '../graphql/mutations';
 import { useAuth } from '../contexts/AuthContext';
 import Layout from '../components/Layout';
-import { LoginInput, LoginResponse, User } from '../types';
+import { LoginInput, LoginResponse } from '../types';
 import { NextPage } from 'next';
 
 const Login: NextPage = () => {
